@@ -5,7 +5,7 @@
 <Configuration status="ERROR" monitorInterval="30">
   <Properties>
     <Property name="logDir">./logs</Property>
-    <Property name="histLogDir">./logs/hist</Property>
+    <Property name="hostLogDir">./logs/host</Property>
     <Property name="splitSize">10MB</Property>
     <Property name="fileCount">5</Property>
   </Properties>
@@ -17,13 +17,13 @@
         pattern="%d{yyyy-MM-dd HH:mm:ss} %style{[%t]}{Cyan} %highlight{%-5p} %style{%c{1.2.*}}{Blue}(%style{%L}{Yellow}): %m%n{STYLE=Logback}"/>
     </Console>
     <!-- Appender2 File -->
-    <File name="AllLog" fileName="${logDir}/allinone.log" append="false">
+    <File name="AllLog" fileName="${logDir}/host.log" append="false">
       <ThresholdFilter level="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
       <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1.2.*}(%L): %m%n"/>
     </File>
     <!-- Appender3 RollingFile:Error -->
     <RollingFile name="RollingFileError" fileName="${logDir}/error.log"
-      filePattern="${histLogDir}/error-%d{yyyy-MM-dd}-%i.log">
+      filePattern="${hostLogDir}/error-%d{yyyy-MM-dd}-%i.log">
       <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
       <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1.2.*}(%L): %m%n"/>
       <Policies>
@@ -34,7 +34,7 @@
     </RollingFile>
     <!-- Appender4 RollingFile:Info -->
     <RollingFile name="RollingFileInfo" fileName="${logDir}/info.log"
-      filePattern="${histLogDir}/info-%d{yyyy-MM-dd}-%i.log">
+      filePattern="${hostLogDir}/info-%d{yyyy-MM-dd}-%i.log">
       <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
       <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1.2.*}(%L): %m%n"/>
       <Policies>
@@ -45,7 +45,7 @@
     </RollingFile>
     <!-- Appender5 RollingFile:Debug -->
     <RollingFile name="RollingFileDebug" fileName="${logDir}/debug.log"
-      filePattern="${histLogDir}/debug-%d{yyyy-MM-dd}-%i.log">
+      filePattern="${hostLogDir}/debug-%d{yyyy-MM-dd}-%i.log">
       <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
       <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1.2.*}(%L): %m%n"/>
       <Policies>
@@ -56,7 +56,7 @@
     </RollingFile>
     <!-- A special RollingFile1: InfoOnly -->
     <RollingFile name="RollingFileInfoOnly" fileName="${logDir}/infoonly.log"
-      filePattern="${histLogDir}/infoonly-%d{yyyy-MM-dd}-%i.log">
+      filePattern="${hostLogDir}/infoonly-%d{yyyy-MM-dd}-%i.log">
       <Filters>
         <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
         <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
@@ -70,7 +70,7 @@
     </RollingFile>
     <!-- A special RollingFile2: ZBT -->
     <RollingFile name="RollingFileZBT" fileName="${logDir}/zbt.log"
-      filePattern="${histLogDir}/zbt-%d{yyyy-MM-dd}-%i.log">
+      filePattern="${hostLogDir}/zbt-%d{yyyy-MM-dd}-%i.log">
       <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
       <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1.2.*}(%L): %m%n"/>
 
