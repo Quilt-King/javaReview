@@ -31,5 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
-logs/debug.log
-*.log
+logs/*
+mvnw
+mvnw.cmd
