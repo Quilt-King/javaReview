@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    #   数据源基本配置
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jeecg-boot?characterEncoding=utf-8&useUnicode=true&useSSL=false
+    #UTC代表是全球标准时间，北京时间东八区领先UTC 8个小时。
+    type: com.alibaba.druid.pool.DruidDataSource
+    #   数据源其他配置
+    initialSize: 10
+    minIdle: 10
+    maxActive: 10
+    maxWait: 60000
+
+    keepAlive: true
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true
+
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    #      poolPreparedStatements: true
+    #      maxPoolPreparedStatementPerConnectionSize: 20
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    useGlobalDataSourceStat: true
+    # 打开mergeSql功能；慢SQL记录
+
+  rabbitmq:
+    host: 192.168.99.129
+    username: guest
+    password: guest
+    publisher-returns: true
+    port: 5672
+    virtual-host: /
+    listener:
+      direct:
+        auto-startup: true
+    publisher-confirm-type: correlated
+mybatis:
+  # 指定全局配置文件位置
+  config-location: classpath:mybatis/mybatis-config.xml
+  # 指定sql映射文件位置
+  mapper-locations: classpath:mapper/*.xml
